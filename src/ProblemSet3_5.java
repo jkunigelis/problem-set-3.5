@@ -13,15 +13,25 @@
  * 
  * This problem set is worth 25 points and is due no later than 11:59pm on October 28, 2018.
  */
-
+import java.util.Scanner;
 public class ProblemSet3_5 {
 	
 	public static void main(String[] args) {
 		ProblemSet3_5 ps = new ProblemSet3_5();
 		
-		// test your solutions here
+		// scanner
+		Scanner in = new Scanner(System.in);
 		
-		ps.primes(1, 1000);
+		//ex 1
+		System.out.println("Exercise 1\n");
+		System.out.println("Starting value will be 1.");
+		int start = 1;
+		System.out.println("Please enter ending value.");
+		int end = in.nextInt();
+		ps.primes(start, end);
+		
+		//close scanner
+		in.close();
 	}
 	
 	/**
@@ -36,7 +46,29 @@ public class ProblemSet3_5 {
 	 */
 	
 	public void primes(int start, int end) {
-		
+		int count;
+		int countPrime = 0;
+		int i = start - 1 ;
+		while (start < end) {
+			count = 0;
+			i = start - 1;
+			while (i > 0) {
+				if (start % i == 0) {
+					count++;
+				}
+				if (count == 0) {
+					countPrime++;
+				}
+				i--;
+			}
+			start++;
+		}
+		if (countPrime == 1) {
+			System.out.println("There is " + countPrime + " prime number.");
+		}
+		else if (countPrime > 1 || countPrime == 0) {
+			System.out.println("There are " + countPrime + " prime numbers.");
+		}
 	}
 	
 	/**
