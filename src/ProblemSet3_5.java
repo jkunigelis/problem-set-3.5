@@ -23,12 +23,18 @@ public class ProblemSet3_5 {
 		Scanner in = new Scanner(System.in);
 		
 		//ex 1
-		System.out.println("Exercise 1\n");
+		System.out.println("Exercise 1");
 		System.out.println("Starting value will be 1.");
 		int start = 1;
 		System.out.println("Please enter ending value.");
 		int end = in.nextInt();
 		ps.primes(start, end);
+		
+		//ex 2
+		System.out.println("Exercise 2");
+		System.out.println("Enter how many future leap years you want to see.");
+		int count = in.nextInt();
+		ps.leapYears(count);
 		
 		//close scanner
 		in.close();
@@ -48,16 +54,20 @@ public class ProblemSet3_5 {
 	public void primes(int start, int end) {
 		int count = 0;
 		int countPrime = 0;
+		// makes sure to include 2
 		if (end > 1) {
 			countPrime++;
 		}
 		while (start <= end) {
+			//how many numbers it is divisible by
+			//resets for every number
 			count = 0;
 			for(int i = 2; i < start; i++) {
 				if (start % i == 0) {
 					count++;
 				}
 				if (i == start - 1) {
+					//if it wasnt divisible by anything then its prime
 					if (count == 0) {
 						countPrime++;
 					}
