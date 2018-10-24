@@ -46,20 +46,22 @@ public class ProblemSet3_5 {
 	 */
 	
 	public void primes(int start, int end) {
-		int count;
+		int count = 0;
 		int countPrime = 0;
-		int i = start - 1 ;
-		while (start < end) {
+		if (end > 1) {
+			countPrime++;
+		}
+		while (start <= end) {
 			count = 0;
-			i = start - 1;
-			while (i > 0) {
+			for(int i = 2; i < start; i++) {
 				if (start % i == 0) {
 					count++;
 				}
-				if (count == 0) {
-					countPrime++;
+				if (i == start - 1) {
+					if (count == 0) {
+						countPrime++;
+					}
 				}
-				i--;
 			}
 			start++;
 		}
