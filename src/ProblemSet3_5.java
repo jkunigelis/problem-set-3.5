@@ -32,6 +32,7 @@ public class ProblemSet3_5 {
 		
 		//ex 2
 		System.out.println("Exercise 2");
+		System.out.println("Year assumed to be 2018.");
 		System.out.println("Enter how many future leap years you want to see.");
 		int count = in.nextInt();
 		ps.leapYears(count);
@@ -94,9 +95,67 @@ public class ProblemSet3_5 {
 	 */
 	
 	public void leapYears(int count) {
-		
+		int year = 2018;
+		boolean isLeapYear = false;
+		int leapYear = 0;
+		//num of years until last leap year from 2018
+		int num = 0;
+		for (int i = 4; i > 0; i--) {
+			if ((year + i) % 4 == 0) {
+				num = i + (4 * count);
+			}
+		}
+		if (count == 1) {
+			System.out.print("The next leap year is ");
+			for (int i1 = 0; i1 < num; i1++) {
+				leapYear = year + i1;
+				isLeapYear = false;
+				if ((year + i1) % 100 == 0) {
+					if ((year + i1) % 400 == 0) {
+						isLeapYear = true;
+					}
+					else if ((year + i1) % 400 != 0) {
+						isLeapYear = false;
+					}
+				}
+				else if ((year + i1) % 4 == 0) {
+					isLeapYear = true;
+				}
+				if (isLeapYear == true) {
+					System.out.println(leapYear + ".");
+				}
+			}
+		}
+		if (count == 2) {
+			System.out.print("The next 2 leap years are ");
+			for (int i1 = 0; i1 < num; i1++) {
+				leapYear = year + i1;
+				isLeapYear = false;
+				if ((year + i1) % 100 == 0) {
+					if ((year + i1) % 400 == 0) {
+						isLeapYear = true;
+					}
+					else if ((year + i1) % 400 != 0) {
+						isLeapYear = false;
+					}
+				}
+				else if ((year + i1) % 4 == 0) {
+					isLeapYear = true;
+				}
+				if (i1 != (num - 1)) {
+					if (isLeapYear == true) {
+						System.out.println(leapYear + " and");
+					}
+				}
+				else if (i1 == (num)) {
+					if (isLeapYear == true) {
+						System.out.println(leapYear + ".");
+					}
+				}
+			}
+		}
 	}
-	
+
 	/**
 	 * Is @number a palindromic number?
 	 * 
