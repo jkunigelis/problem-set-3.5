@@ -22,7 +22,7 @@ public class ProblemSet3_5 {
 		// scanner
 		Scanner in = new Scanner(System.in);
 		
-		//ex 1
+		/*//ex 1
 		System.out.println("Exercise 1");
 		System.out.println("Starting value will be 1.");
 		int start = 1;
@@ -35,7 +35,13 @@ public class ProblemSet3_5 {
 		System.out.println("Year assumed to be 2018.");
 		System.out.println("Enter how many future leap years you want to see.");
 		int count = in.nextInt();
-		ps.leapYears(count);
+		ps.leapYears(count); */
+		
+		//ex 3
+		System.out.println("Exercise 3");
+		System.out.println("Enter number to see if it is palindromic.");
+		int number = in.nextInt();
+		ps.palindromicNumbers(number);
 		
 		//close scanner
 		in.close();
@@ -98,6 +104,7 @@ public class ProblemSet3_5 {
 		int year = 2018;
 		boolean isLeapYear = false;
 		int leapYear = 0;
+		int numLeapYears = 0;
 		//num of years until last leap year from 2018
 		int num = 0;
 		for (int i = 4; i > 0; i--) {
@@ -134,6 +141,7 @@ public class ProblemSet3_5 {
 				if ((year + i1) % 100 == 0) {
 					if ((year + i1) % 400 == 0) {
 						isLeapYear = true;
+						numLeapYears++;
 					}
 					else if ((year + i1) % 400 != 0) {
 						isLeapYear = false;
@@ -141,15 +149,46 @@ public class ProblemSet3_5 {
 				}
 				else if ((year + i1) % 4 == 0) {
 					isLeapYear = true;
+					numLeapYears++;
 				}
-				if (i1 != (num - 1)) {
+				if (numLeapYears == 1) {
 					if (isLeapYear == true) {
-						System.out.println(leapYear + " and");
+						System.out.print(leapYear + " and");
 					}
 				}
-				else if (i1 == (num)) {
+				else {
 					if (isLeapYear == true) {
 						System.out.println(leapYear + ".");
+					}
+				}
+			}
+		}
+		else if (count > 2) {
+			System.out.print("The next " + count + " leap years are ");
+			for (int i1 = 0; i1 < num; i1++) {
+				leapYear = year + i1;
+				isLeapYear = false;
+				if ((year + i1) % 100 == 0) {
+					if ((year + i1) % 400 == 0) {
+						isLeapYear = true;
+						numLeapYears++;
+					}
+					else if ((year + i1) % 400 != 0) {
+						isLeapYear = false;
+					}
+				}
+				else if ((year + i1) % 4 == 0) {
+					isLeapYear = true;
+					numLeapYears++;
+				}
+				if (numLeapYears == count) {
+					if (isLeapYear == true) {
+						System.out.println("and " + leapYear + ".");
+					}
+				}
+				else {
+					if (isLeapYear == true) {
+						System.out.print(leapYear + ", ");
 					}
 				}
 			}
@@ -166,7 +205,56 @@ public class ProblemSet3_5 {
 	 */
 	
 	public void palindromicNumbers(int number) {
-		
+		int numBefore = 0;
+		int num = 0;
+		boolean isPalindromicNumber = false;
+		if (number % 2 == 0) {
+			if (number % 10 == 0) {
+				for (int i = 0; i < 10; i++) {
+					if ((number - i) % 10 == 0) {
+						num = i;
+						numBefore = i;
+					}
+				}
+			}
+			else if (number % 2 == 0) {
+				for (int i = 0; i < 10; i++) {
+					if ((number - i) % 10 == 0) {
+						num = i + 1;
+						numBefore = i;
+					}
+				}
+			}
+			if (number % 10 == 0) {
+				isPalindromicNumber = false;
+			}
+			else if ((number - numBefore) % num == 0) {
+				isPalindromicNumber = true;
+			}
+		}
+		else {
+			for (int i = 0; i < 10; i++) {
+				if ((number - i) % 10 == 0) {
+					if ((number - i) % 5 == 0) {
+						num = i + (i / 2);
+						numBefore = i;
+					}
+					else {
+						num = i + 1;
+						numBefore = i;
+					}
+				}
+			}
+			if ((number - numBefore) % num == 0) {
+				isPalindromicNumber = true;
+			}
+		}
+		if (isPalindromicNumber == false) {
+			System.out.println("This is not a palindromic number.");
+		}
+		else if (isPalindromicNumber == true) {
+			System.out.println("This is a palindromic number.");
+		}
 	}
 	
 	/**
