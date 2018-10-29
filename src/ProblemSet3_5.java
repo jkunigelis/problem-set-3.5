@@ -35,13 +35,19 @@ public class ProblemSet3_5 {
 		System.out.println("Year assumed to be 2018.");
 		System.out.println("Enter how many future leap years you want to see.");
 		int count = in.nextInt();
-		ps.leapYears(count); */
+		ps.leapYears(count); 
 		
 		//ex 3
 		System.out.println("Exercise 3");
 		System.out.println("Enter number to see if it is palindromic.");
 		int number = in.nextInt();
-		ps.palindromicNumbers(number);
+		ps.palindromicNumbers(number); */
+		
+		//ex 4
+		System.out.println("Exercise 4");
+		System.out.println("What fibonacci number do you want to see?");
+		int n = in.nextInt();
+		ps.fibonacci(n);
 		
 		//close scanner
 		in.close();
@@ -269,7 +275,28 @@ public class ProblemSet3_5 {
 	 */
 	
 	public void fibonacci(int n) {
-		
+		int sum = 0;
+		int prev1 = 0;
+		int prev2 = 0;
+		for (int i = 0; i <= n; i++) {
+			if (i == 0) {
+				sum = 0;
+			}
+			if (i == 1) {
+				sum = i;
+				prev1 = sum;
+			}
+			else if (i == 2) {
+				sum = prev1;
+				prev2 = prev1;
+			}
+			else if (i > 2) {
+				sum = prev1 + prev2;
+				prev2 = prev1;
+				prev1 = sum;
+			}
+		}
+		System.out.println(sum);
 	}
 	
 	/**
