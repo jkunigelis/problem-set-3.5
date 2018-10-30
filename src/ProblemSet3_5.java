@@ -35,19 +35,19 @@ public class ProblemSet3_5 {
 		System.out.println("Year assumed to be 2018.");
 		System.out.println("Enter how many future leap years you want to see.");
 		int count = in.nextInt();
-		ps.leapYears(count); 
+		ps.leapYears(count); */
 		
 		//ex 3
 		System.out.println("Exercise 3");
 		System.out.println("Enter number to see if it is palindromic.");
 		int number = in.nextInt();
-		ps.palindromicNumbers(number); 
+		ps.palindromicNumbers(number);
 		
-		//ex 4
+		/*//ex 4
 		System.out.println("Exercise 4");
 		System.out.println("What fibonacci number do you want to see?");
 		int n = in.nextInt();
-		ps.fibonacci(n); */
+		ps.fibonacci(n); 
 		
 		//ex 5
 		System.out.println("Exercise 5");
@@ -57,7 +57,7 @@ public class ProblemSet3_5 {
 		int y = in.nextInt();
 		System.out.println("Enter value for limit.");
 		int limit = in.nextInt();
-		ps.multiples(x, y, limit);
+		ps.multiples(x, y, limit); */
 		
 		//close scanner
 		in.close();
@@ -219,51 +219,41 @@ public class ProblemSet3_5 {
 	 *                                               
 	 * @param number
 	 */
-	
+	//currently works with an even amount of digits
+	//working on the odd ones
 	public void palindromicNumbers(int number) {
 		int numBefore = 0;
-		int num = 0;
+		int numOfZeros = 0;
+		int numBeforeZero = 0;
 		boolean isPalindromicNumber = false;
-		if (number % 2 == 0) {
-			if (number % 10 == 0) {
-				for (int i = 0; i < 10; i++) {
-					if ((number - i) % 10 == 0) {
-						num = i;
-						numBefore = i;
-					}
+		
+		for (int i = 0; i < 10; i++) {
+			if ((number - i) % 10 == 0) {
+				numBefore = i;
+			}
+		}
+		for (int j = 0; j <= number; j++) {
+			//say the number is 1011.
+			//should subtract 1011 - 1 - 10 to equal 1000.
+			//then it should divide it by 1000
+			//it should find the amount of zeros in the number
+			if (((number - numBefore) - j) / Math.pow(10,((Integer.toString(((number - numBefore) - j) - 1).length()))) == 1) {
+				if (numBeforeZero == 0) {
+					numBeforeZero = j;
+					numOfZeros = (int)Math.pow(10,((Integer.toString(((int)(((number - numBefore) - numBeforeZero) - 1))).length())));
 				}
 			}
-			else if (number % 2 == 0) {
-				for (int i = 0; i < 10; i++) {
-					if ((number - i) % 10 == 0) {
-						num = i + 1;
-						numBefore = i;
-					}
-				}
-			}
-			if (number % 10 == 0) {
-				isPalindromicNumber = false;
-			}
-			else if ((number - numBefore) % num == 0) {
+		}
+		if (numOfZeros % 2 == 0 && number > 9) {
+			if (number % 11 == 0) {
 				isPalindromicNumber = true;
 			}
 		}
-		else {
-			for (int i = 0; i < 10; i++) {
-				if ((number - i) % 10 == 0) {
-					if ((number - i) % 5 == 0) {
-						num = i + (i / 2);
-						numBefore = i;
-					}
-					else {
-						num = i + 1;
-						numBefore = i;
-					}
-				}
-			}
-			if ((number - numBefore) % num == 0) {
-				isPalindromicNumber = true;
-			}
+		else if (number > 0 && number < 10) {
+			isPalindromicNumber = true;
+		}
+		if (number % 10 == 0) {
+			isPalindromicNumber = false;
 		}
 		if (isPalindromicNumber == false) {
 			System.out.println("This is not a palindromic number.");
