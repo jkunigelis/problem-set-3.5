@@ -296,7 +296,24 @@ public class ProblemSet3_5 {
 				prev1 = sum;
 			}
 		}
-		System.out.println(sum);
+		int num = 0;
+		for (int i = 0; i < 10; i++) {
+			if ((n - i) % 10 == 0) {
+				num = i;
+			}
+		}
+		if (num == 1) {
+			System.out.println("The " + n + "st Fibonacci number is " + sum);
+		}
+		else if (num == 2) {
+			System.out.println("The " + n + "nd Fibonacci number is " + sum);
+		}
+		else if (num == 3) {
+			System.out.println("The " + n + "rd Fibonacci number is " + sum);
+		}
+		else {
+			System.out.println("The " + n + "th Fibonacci number is " + sum);
+		}
 	}
 	
 	/**
