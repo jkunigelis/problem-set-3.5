@@ -41,13 +41,23 @@ public class ProblemSet3_5 {
 		System.out.println("Exercise 3");
 		System.out.println("Enter number to see if it is palindromic.");
 		int number = in.nextInt();
-		ps.palindromicNumbers(number); */
+		ps.palindromicNumbers(number); 
 		
 		//ex 4
 		System.out.println("Exercise 4");
 		System.out.println("What fibonacci number do you want to see?");
 		int n = in.nextInt();
-		ps.fibonacci(n);
+		ps.fibonacci(n); */
+		
+		//ex 5
+		System.out.println("Exercise 5");
+		System.out.println("Enter value for x.");
+		int x = in.nextInt();
+		System.out.println("Enter value for y.");
+		int y = in.nextInt();
+		System.out.println("Enter value for limit.");
+		int limit = in.nextInt();
+		ps.multiples(x, y, limit);
 		
 		//close scanner
 		in.close();
@@ -326,6 +336,21 @@ public class ProblemSet3_5 {
 	 */
 	
 	public void multiples(int x, int y, int limit) {
-		
+		int sum = 0;
+		for (int i = 1; i <= x; i++) {
+			if (x % i == 0) {
+				if (i < limit) {
+					sum = sum + i;
+				}
+			}
+		}
+		for (int i = 1; i <= y; i++) {
+			if (y % i == 0) {
+				if (i < limit) {
+					sum = sum + i;
+				}
+			}
+		}
+		System.out.println("The sum is " + sum + ".");
 	}
 }
